@@ -2,7 +2,7 @@ defmodule ExSenml.MixProject do
   use Mix.Project
 
   @version "0.1.0"
-  @description "A SenML toolset encoder/decoder/normalizer"
+  @description "A SenML toolset converter/normalizer"
 
   def project do
     [
