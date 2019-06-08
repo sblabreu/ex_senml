@@ -9,7 +9,7 @@ defmodule ExSenml.SenmlHandler do
 
   def validate_and_resolve(body, _id) when is_list(body) and length(body) == 0 do
     # TODO parse SenML Function ... for now basic validation
-    body |> IO.inspect()
+    body
     {:not_acceptable, "Payload is not valid SenML"}
   end
 

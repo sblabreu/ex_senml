@@ -19,16 +19,43 @@ defmodule ExSenml do
       Concise Binary Object Representation (CBOR), eXtensible Markup Language (XML), and Efficient XML Interchange (EXI), 
       which share the common SenML data model. 
 
-  ## Example 
+  ## Example 1
 
-    iex(1)> senml_payload_rsv_rec_1 = [%{u: "lon", v: 24.30621},%{u: "lat", v: 60.07965}]
-    [%{u: "lon", v: 24.30621}, %{u: "lat", v: 60.07965}]
-    iex(2)> ExSenml.Resolver.record(senml_payload_rsv_rec_1, %ExSenml.SenmlStruct{}, "1234", [])
-    {:ok,
-    [
-      %{n: "1234", t: 1559941951, u: "lat", v: 60.07965},
-      %{n: "1234", t: 1559941951, u: "lon", v: 24.30621}
-    ]}
+      iex> senml_payload_rsv_rec_1 = [%{u: "lon", v: 24.30621},%{u: "lat", v: 60.07965}]
+      [%{u: "lon", v: 24.30621}, %{u: "lat", v: 60.07965}]
+      iex> ExSenml.validate_and_resolve(senml_payload_rsv_rec_1,"1234")
+      {:ok,
+      [
+        %{n: "1234", t: 1559987179, u: "lat", v: 60.07965},
+        %{n: "1234", t: 1559987179, u: "lon", v: 24.30621}
+      ]}
+
+  ## Example 2
+
+      iex(1)> senml_payload_base_fields = [
+      ...(1)>     %{bn: "1234", bt: 1_559_813_429, bu: "%RH", v: 20},
+      ...(1)>     %{u: "lon", v: 24.30621},
+      ...(1)>     %{u: "lat", v: 60.07965},
+      ...(1)>     %{n: "tracker", t: 60, v: 20.3}
+      ...(1)>   ]
+      [
+        %{bn: "1234", bt: 1559813429, bu: "%RH", v: 20},
+        %{u: "lon", v: 24.30621},
+        %{u: "lat", v: 60.07965},
+        %{n: "tracker", t: 60, v: 20.3}
+      ]
+      iex(2)> ExSenml.validate_and_resolve(senml_payload_base_fields,"1234")
+      {:ok,
+      [
+        %{n: "1234/tracker", t: 1559813489, u: "%RH", v: 20.3},
+        %{n: "1234", t: 1559813429, u: "lat", v: 60.07965},
+        %{n: "1234", t: 1559813429, u: "lon", v: 24.30621}
+      ]}
+
+  ## Example 3
+
+      iex(2)> ExSenml.validate_and_resolve(senml_payload_base_fields,"9876")
+      {:not_acceptable, "Payload is not valid SenML"}
 
   ## TODO 
 
