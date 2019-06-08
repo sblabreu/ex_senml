@@ -34,7 +34,7 @@ Toolset to Normalize SenML and other conversion promises
   - [x] Basic record normalization
   - [ ] Validate "n" fields caracters
   - [ ] Convert Beetween formats
-  - [ ] Proper Documentation
+  - [ ] Improve Documentation [https://hexdocs.pm/ex_senml](https://hexdocs.pm/ex_senml).
   - [ ] Make the world adopt SenML
 
 ## Installation
@@ -45,12 +45,12 @@ by adding `ex_senml` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:ex_senml, "~> 0.1.0"}
+    {:ex_senml, "~> 0.0.0"}
   ]
 end
 ```
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/ex_senml](https://hexdocs.pm/senml).
+be found at [https://hexdocs.pm/ex_senml](https://hexdocs.pm/ex_senml).
 
