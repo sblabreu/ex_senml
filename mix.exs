@@ -44,7 +44,7 @@ defmodule ExSenml.MixProject do
 
   defp package do
     %{
-      licenses: ["Apache 2.0"],
+      licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/sblabreu/ex_senml"}
     }
   end

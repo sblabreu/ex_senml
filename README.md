@@ -22,11 +22,11 @@ Toolset to Normalize SenML and other conversion promises
 
     iex(1)> senml_payload_rsv_rec_1 = [%{u: "lon", v: 24.30621},%{u: "lat", v: 60.07965}]
     [%{u: "lon", v: 24.30621}, %{u: "lat", v: 60.07965}]
-    iex(2)> ExSenml.Resolver.record(senml_payload_rsv_rec_1, %ExSenml.SenmlStruct{}, "1234", [])
+    iex(2)> ExSenml.validate_and_resolve(senml_payload_rsv_rec_1,"1234")
     {:ok,
     [
-      %{n: "1234", t: 1559941951, u: "lat", v: 60.07965},
-      %{n: "1234", t: 1559941951, u: "lon", v: 24.30621}
+      %{n: "1234", t: 1559984152, u: "lat", v: 60.07965},
+      %{n: "1234", t: 1559984152, u: "lon", v: 24.30621}
     ]}
 
   ## TODO 

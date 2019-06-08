@@ -40,4 +40,8 @@ defmodule ExSenml do
 
 
   """
+
+  alias ExSenml.SenmlHandler
+
+  defdelegate validate_and_resolve(payload,device_id), to: SenmlHandler
 end
